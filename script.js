@@ -4,13 +4,13 @@ document.addEventListener('DOMContentLoaded', function () {
     const navLinks = document.querySelector('.nav-links');
     const cartIcon = document.querySelector('.cart-icon');
     const cartSidebar = document.querySelector('.cart-sidebar');
-    const closeCartBtn = document.querySelector('.close-cart');
+    const closeCartBtn = document.querySelector('.close-btn'); // Fixed selector
     const overlay = document.querySelector('.overlay');
     const filterBtns = document.querySelectorAll('.filter-btn');
     const productGrid = document.getElementById('productGrid');
     const quickViewBtns = document.querySelectorAll('.quick-view-btn');
     const quickViewModal = document.querySelector('.quick-view-modal');
-    const closeModalBtn = document.querySelector('.close-modal');
+    const closeModalBtn = document.querySelector('#closeModal'); // Fixed selector
     const testimonialDots = document.querySelectorAll('.nav-dot');
     const addToCartBtns = document.querySelectorAll('.add-cart-btn');
     const cartItems = document.querySelector('.cart-items');
@@ -263,7 +263,7 @@ document.addEventListener('DOMContentLoaded', function () {
               <span class="reviews">(${product.reviews})</span>
             </div>
             <div class="product-price">
-              <span class="current-price">$${product.price.toFixed(2)}</span>
+              <span class="current-price">₹${product.price.toFixed(2)}</span>
               <span class="old-price">$${product.oldPrice.toFixed(2)}</span>
               <span class="discount">-${product.discount}%</span>
             </div>
@@ -342,7 +342,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (cart.length === 0) {
             cartItems.innerHTML = '<p class="empty-cart">Your cart is empty</p>';
-            if (cartTotal) cartTotal.textContent = '$0.00';
+            if (cartTotal) cartTotal.textContent = '₹0.00';
             return;
         }
 
@@ -376,7 +376,7 @@ document.addEventListener('DOMContentLoaded', function () {
             cartItems.appendChild(cartItem);
         });
 
-        if (cartTotal) cartTotal.textContent = `$${total.toFixed(2)}`;
+        if (cartTotal) cartTotal.textContent = `₹${total.toFixed(1)}`;
 
         // Add event listeners for quantity buttons and remove buttons
         document.querySelectorAll('.qty-btn.minus').forEach(btn => {
@@ -485,8 +485,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 <span class="reviews">(${product.reviews} reviews)</span>
               </div>
               <div class="product-price">
-                <span class="current-price">$${product.price.toFixed(2)}</span>
-                <span class="old-price">$${product.oldPrice.toFixed(2)}</span>
+                <span class="current-price">₹${product.price.toFixed(2)}</span>
+                <span class="old-price">₹${product.oldPrice.toFixed(2)}</span>
                 <span class="discount">-${product.discount}%</span>
               </div>
               <p class="product-description">${product.description}</p>
@@ -710,7 +710,7 @@ document.addEventListener('DOMContentLoaded', function () {
             cartSidebarElement.innerHTML = `
           <div class="cart-header">
             <h3>Your Cart (${cart.length})</h3>
-            <button class="close-cart">×</button>
+            <button class="close-btn">×</button>
           </div>
           <div class="cart-body">
             <div class="cart-items"></div>
@@ -718,7 +718,7 @@ document.addEventListener('DOMContentLoaded', function () {
           <div class="cart-footer">
             <div class="cart-total">
               <span>Total:</span>
-              <span class="cart-total-value">$0.00</span>
+              <span class="cart-total-value">₹0.00</span>
             </div>
             <button class="checkout-btn">Proceed to Checkout</button>
           </div>
